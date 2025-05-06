@@ -1,0 +1,20 @@
+.navButton{
+    
+    
+    
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    opacity: 0.7;
+    border: none;
+    
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    transition: opacity 0.3s ;
+}
+
+.navButton:hover{
+    opacity: 1;
+}
