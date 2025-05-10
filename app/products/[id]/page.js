@@ -3,41 +3,48 @@ import ImageReview from "@/app/components/ImageReview";
 import Record from "@/app/components/Record";
 import { ShoppingCartIcon } from "@heroicons/react/16/solid";
 import axios from "axios";
+import { notFound } from "next/navigation";
 
 
 // time to repeat request
-export const revalidate = 3500;
 
-export async function getProducts(){
-    const res = await axios.get('https://jusikids.ru/api/api/products');
 
-    return res.data.content;
+export async function getProduct(id){
+    try{
+        const res = await fetch(`https://jusikids.ru/api/api/products/${Number(id)}`).then(res => res.json());
+        return res;
+    }catch(err){
+        throw err;
+    }
 }
 
 export async function generateMetadata({ params }) {
-    const product = await fetch(`https://jusikids.ru/api/api/products/${params.id}`).then(res => res.json());
+    const {id} = await params;
+    try{
+    const product = await getProduct(id);
 
+    
     return {
         title: product.name,
         description: product.description
+    
     }
-}
-
-// fetch products and set ids for pages rendering
-export async function generateStaticParams(){
-    try{
-        const products = await getProducts(); // кэшируется
-        return products.map(p => ({id: p.id.toString()}));
-    }catch(err){
-        return [];
-    }
+    }catch(err){}
 }
 
 export default async function Product({params}){
-    const products = await getProducts();
-    const product = products.find(p => p.id.toString() === params.id);
-    return (
-        
+    const {id} = await params;
+    let product;
+    try{
+        product = await getProduct(id);
+    }catch(err){
+        return <p>{err.message}</p>
+    }
+
+    if(!product){
+        return notFound();
+    }
+    return (    
         <div className=' flex flex-grow min-h-screen flex-col pt-2 sm:pt-10 2xl:mx-auto 2xl:max-w-[90rem]'>
             <div className=' flex flex-col lg:items-center lg:flex-row lg:gap-3'>
                 <ImageReview images={product.images.sort((a, b) => a.priority - b.priority)} />

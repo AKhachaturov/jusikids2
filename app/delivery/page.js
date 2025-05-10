@@ -13,7 +13,7 @@ import manufacturer from "../images/manufacturer.svg";
 export default function Delivery(){
     return (
      
-        <div className="flex-grow min-h-screen max-w-[50rem] xl:max-w-[70rem] mx-auto">
+        <div className="flex-grow min-h-screen max-w-[50rem] xl:max-w-[70rem] mx-auto overflow-hidden">
             <div className="px-5 mt-10">
                 <HeadText className="text-gray-900">Контакты</HeadText>
                 <p className="mt-5 text-xl">Если Вы заинтересованы нашим продуктом или у Вас есть вопросы, Вы можете связаться с нами указанными ниже способами.</p>
@@ -38,15 +38,15 @@ export default function Delivery(){
                 <HeadText className="text-gray-900">Доставка</HeadText>
                 <p className="mt-5 text-xl">Доставка осуществляется следующими транспортными компаниями</p>
                 <div className="flex flex-col items-center md:flex-row md:gap-10">
-                    <Image src={pek} loading="lazy" className="max-w-[15rem] xl:max-w-[20rem]" alt=""/>
-                    <Image src={delovye} loading="lazy" className="max-w-[15rem] xl:max-w-[20rem]" alt=""/>
-                    <Image src={cdek} loading="lazy" className="max-w-[15rem] xl:max-w-[20rem]" alt=""/> 
+                    <Image src={pek} className="max-w-[15rem] xl:max-w-[20rem]" alt=""/>
+                    <Image src={delovye} className="max-w-[15rem] xl:max-w-[20rem]" alt=""/>
+                    <Image src={cdek} className="max-w-[15rem] xl:max-w-[20rem]" alt=""/> 
                 </div>  
             </div>
             <div className="px-5 mt-6">
                 <HeadText className="text-gray-900">Производитель</HeadText>
                 <div className="flex flex-col xl:flex-row xl:items-center xl:gap-10">
-                    <Image src={manufacturer} loading="lazy" className="mt-10 max-w-xl" alt=""/>
+                    <Image src={manufacturer} className="mt-10 max-w-xl" alt=""/>
                     <div className="mt-8 flex flex-col gap-1 md:gap-2">
                         <p className="font-satoshi text-xl font-semibold md:text-2xl">Хачатуров Олег Анатольевич ИП</p>
                         <p className="text-lg md:text-xl">ОГРНИП: 310264120900035</p>

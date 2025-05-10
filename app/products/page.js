@@ -12,7 +12,7 @@ import axios from "axios";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useDebounce } from 'use-debounce';
 
-
+export const dynamic = 'force-dynamic';
 
 let productsTest = [
     {
